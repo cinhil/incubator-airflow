@@ -1734,6 +1734,8 @@ class TaskInstance(Base, LoggingMixin):
         yesterday_ds = (self.execution_date - timedelta(1)).isoformat()[:10]
         tomorrow_ds = (self.execution_date + timedelta(1)).isoformat()[:10]
 
+        import pydevd
+        pydevd.settrace("192.168.1.5", port=5678)
         prev_execution_date = task.dag.previous_schedule(self.execution_date)
         next_execution_date = task.dag.following_schedule(self.execution_date)
 
