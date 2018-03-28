@@ -892,6 +892,8 @@ def serve_logs(args):
 
 
 def worker(args):
+    import pydevd
+    pydevd.settrace("192.168.14.105", port=5678)
     env = os.environ.copy()
     env['AIRFLOW_HOME'] = settings.AIRFLOW_HOME
 

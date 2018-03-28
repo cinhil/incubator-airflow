@@ -49,6 +49,8 @@ app = Celery(
 def execute_command(command):
     log = LoggingMixin().log
     log.info("Executing command in Celery: %s", command)
+    import pydevd
+    pydevd.settrace("192.168.14.105", port=5678)
     env = os.environ.copy()
     try:
         subprocess.check_call(command, shell=True, stderr=subprocess.STDOUT,
